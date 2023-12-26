@@ -87,21 +87,20 @@ export default function TextForm(props) {
                     <textarea className='form-control' value={text} onChange={handelOnChange} style={{backgroundColor: props.mode === 'dark' ? '#192d49' : 'white', color:props.mode==="dark"?"white":"black" }} 
                         id="myBox" rows="8"></textarea>
                 </div>
-                <div className='row justify-content-center'>
-                <button className="btn btn-primary mx-2 my-2 " onClick={handelUpperCaseClick}>Convert to uppercase</button>
-                    
-                <button className="btn btn-primary mx-2 my-2" onClick={handelLowerCaseClick} >Convert to Lowercase</button>
-                <button className="btn btn-primary mx-2 my-2 " onClick={clearText} >Clear Text</button>
+
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-2 " onClick={handelUpperCaseClick}>Convert to uppercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handelLowerCaseClick} >Convert to Lowercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-2 " onClick={clearText} >Clear Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-2 " onClick={handelCopy} >Copy Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2  my-2" onClick={handelSpaces} >Remove Unneceasry Spaces</button>
                 {/* <button className="btn btn-primary mx-2" onClick={handelTitleFormat} >Title Format</button> */}
-                <button className="btn btn-primary mx-2 my-2 " onClick={handelCopy} >Copy Text</button>
                 {/* <button className="btn btn-primary mx-2" onClick={handelSentenceFormat} >Sentence Format</button> */}
-                <button className="btn btn-primary mx-2  my-2" onClick={handelSpaces} >Remove Unneceasry Spaces</button>
                 {/* <button className="btn btn-primary mx-2" onClick={email} >Emial</button> */}
-                </div>
+
             </div>
             <div className="container my-4" style={{ color: props.mode === 'light' ? 'black' : 'white' }} >
                 <h2 >Your Text Summary</h2>
-                <p>{text.split(" ").length} words and {text.length} characters</p>
+                <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
                 <p>{0.008 * text.split(" ").length} minutes required to read</p>
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : "Enter some text above to preview it here."}</p>
