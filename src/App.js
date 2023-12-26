@@ -57,14 +57,15 @@ function App() {
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
-            {/* /users--> Component 1 */
-            // /users/home-->Component 2
-            }
-            <Route excat path="/about" element={<About />} />
+             {/* /users--> Component 1  */}
+            {/* /users/home-->Component 2 */}
+            
+            <Route excat path="/about" element={<About mode={mode} />} />
             <Route excat path="/" element={<TextForm showAlert={showAlert} heading="Enter The Text to Analyze Below" mode={mode} />} />
+            
           </Routes>
         </div>
-
+            
       </Router>
     </>
   );
